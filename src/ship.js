@@ -1,18 +1,12 @@
-const ship = (length, timesHit, isSunk) =>{
-    
-    const shipLength = () => length
+const ship = (length, sunk) => {
+  const timesHit = 0
 
-    const hit = (n) =>{
-        timesHit + n
-    }
+  const hit = (object) => { object.timesHit++ }
 
-    const isItSunk = () =>{
-        if (isSunk === length) 
-        return true
-    }
-
-    return {length, timesHit,isSunk, hit}
+  const isItSunk = (object) => {
+    if (object.length === object.timesHit) { object.sunk = true }
+  }
+  return { length, timesHit, sunk, hit, isItSunk }
 }
 
-
-export {ship}
+export { ship }
