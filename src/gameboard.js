@@ -1,4 +1,4 @@
-export const gameboard = () => {
+const gameboardFactory = () => {
   const playerACoords = [1, 11, 21, 31, 41, 51, 61, 71, 81, 91,
     2, 12, 22, 32, 42, 52, 62, 72, 82, 92,
     3, 13, 23, 33, 43, 53, 63, 73, 83, 93,
@@ -15,15 +15,21 @@ export const gameboard = () => {
     const shiplocation = [location]
 
     if (directionHorizontal === true) {
-      for (let i = 0; i < shiplength; i++) {
+      for (let i = 0; i < shiplength - 1; i++) {
         const lastItem = shiplocation[shiplocation.length - 1]
         shiplocation.push(lastItem + 10)
       }
       object.shipReference = shiplocation
-    } else { console.log('hu') }
+    } else {
+      for (let i = 0; i < shiplength - 1; i++) {
+        const lastItem = shiplocation[shiplocation.length - 1]
+        shiplocation.push(lastItem + 1)
+      }
+      object.shipReference = shiplocation
+    }
   }
 
-  return { setShipLocation, playerACoords }
+  return { setShipLocation }
 }
 
-export default gameboard
+export { gameboardFactory }
